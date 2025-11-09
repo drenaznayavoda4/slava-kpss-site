@@ -1,0 +1,153 @@
+/* === Общие стили === */
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #fff;
+    background: url("img/slava-bg.jpg") no-repeat center center / cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Плавный переход фона в прозрачность */
+body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
+}
+
+/* === Заголовок и меню === */
+header {
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.2em;
+    color: #ff0059;
+    text-shadow: 2px 2px 10px #000;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.menu a:hover {
+    color: #ff0059;
+    transform: scale(1.1);
+}
+
+/* === Основной контент === */
+.intro {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.intro h2 {
+    font-size: 1.8em;
+    color: #ff8c00;
+}
+
+.registration {
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff0059;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* === Кнопка регистрации === */
+.btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0059;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Псевдоселектор hover */
+.btn:hover {
+    background-color: #ff8c00;
+}
+
+/* === Подвал === */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+/* === Внутренняя страница === */
+.Slava-page {
+    background: url("img/slava-bg.jpg") no-repeat center center / cover;
+}
+
+.bio {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px 20px;
+    margin: 80px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #ff0059;
+}
+
+/* Главная */
+.home-page {
+    background: url("img/slava-bg.jpg") no-repeat center center / cover;
+    background-attachment: fixed;
+}
+
+/* О Славе */
+.about-page {
+    background: url("img/slava2.jpg") no-repeat center center / cover;
+    background-attachment: fixed;
+}
+

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слава КПСС — Главная</title>
+
+    <style>
+      body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('img/slava-bg.jpg'); /* ← ДОБАВЛЕНО img/ */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: background-color 0.6s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .bg-control {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        #changeBg {
+            background: linear-gradient(135deg, #ff0000, #000000);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        #changeBg:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        #colorInfo {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .current {
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.8);
+            color: #d00;
+        }
+
+        .log {
+            margin-top: 10px;
+            font-style: italic;
+            color: #c00;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.7);
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: #ff0000;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            background: #000;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #000;
+            background: rgba(255,255,255,0.8);
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
+        /* CSS-переменная для цвета */
+        :root {
+            --overlay-color: rgba(255, 255, 255, 0.7);
+        }
+
+        body::before {
+            background-color: var(--overlay-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Слава КПСС</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="Slava.html">О Славе</a></li>
+                <li><a href="#reg">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Баттлы, протест и поэзия</h2>
+            <p>Добро пожаловать в фан-страницу Славы КПСС. Здесь нет цензуры — только рифмы и правда.</p>
+        </section>
+
+        <section class="bg-control">
+            <button id="changeBg">Смена фона</button>
+            <div id="colorInfo">
+                Сейчас на фоне цвет: <span class="current" id="currentColor">#ffffff</span>
+            </div>
+            <div id="log" class="log"></div>
+        </section>
+
+        <section id="reg" class="registration">
+            <h2>Регистрация</h2>
+            <form>
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" placeholder="Введите имя" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Введите email" required>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" placeholder="Введите пароль" required>
+
+                <button type="submit" class="btn">Регистрация</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 — Almazov M.M.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('changeBg');
+        const currentSpan = document.getElementById('currentColor');
+        const colorInfo = document.getElementById('colorInfo');
+        const log = document.getElementById('log');
+
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgba(${r}, ${g}, ${b}, 0.65)`;
+        }
+
+        function rgbToHex(rgba) {
+            const [r, g, b] = rgba.match(/\d+/g).map(Number);
+            return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+        }
+
+        btn.addEventListener('click', () => {
+            const newColor = getRandomColor();
+            const hexColor = rgbToHex(newColor);
+
+            log.textContent = `Выпал ${hexColor} — меняем фон...`;
+            log.style.opacity = '1';
+
+            setTimeout(() => {
+                document.documentElement.style.setProperty('--overlay-color', newColor);
+                currentSpan.textContent = hexColor;
+                colorInfo.innerHTML = `Сейчас на фоне цвет: <span class="current">${hexColor}</span>`;
+
+                setTimeout(() => {
+                    log.style.opacity = '0';
+                    setTimeout(() => { log.textContent = ''; }, 500);
+                }, 1000);
+            }, 800);
+        });
+    </script>
+</body>
+</html>
